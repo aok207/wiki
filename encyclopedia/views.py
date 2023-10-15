@@ -21,4 +21,4 @@ def wiki_page(request, page_name):
     else:
         content = markdowner.convert(page_content)
 
-    return render(request, "encyclopedia/wiki.html", {"page": page_name.upper(), "content": content})
+    return render(request, "encyclopedia/wiki.html", {"page": page_name.capitalize(), "content": content})
