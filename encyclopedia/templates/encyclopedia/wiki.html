@@ -9,5 +9,9 @@
         <h1>Error! Page not found!</h1>
     {% else %}
         {{ content | safe }}
+        <form action="" method="post">    
+            {% csrf_token %}
+            <button type="submit">Edit</button>
+        </form>
     {% endif %}
 {% endblock %}

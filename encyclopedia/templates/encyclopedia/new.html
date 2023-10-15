@@ -1,0 +1,33 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create A New Entry
+{% endblock %}
+
+{% block body %}
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <strong>Error(s):</strong>
+                <ul>
+                    {% for error in form.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% if form is not None %}
+            <h1>Create a new entry</h1>
+            <form action="{% url 'new' %}" method="post">
+                {% csrf_token %}
+                <label for="title">Title: </label>
+                {{ form.title }}
+                <p><label for="content">Markdown Content:</label></p>
+                {{ form.textarea }}
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        {% else %}
+            <h1>Error: Title already exists!</h1>
+        {% endif %}
+{% endblock %}
+
