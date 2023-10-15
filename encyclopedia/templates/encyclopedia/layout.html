@@ -14,7 +14,7 @@
                 <h2>Wiki</h2>
                 <form action="{% url 'index' %}" method="post">
                     {% csrf_token %}
-                    <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
+                    <input class="search" type="text" name="q" placeholder="Search Encyclopedia" autocomplete="off">
                     <input type="submit" value="Search">
                 </form>
                 <div>
@@ -24,7 +24,7 @@
                     <a href="{% url 'new' %}">Create New Page</a>
                 </div>
                 <div>
-                    Random Page
+                    <a href="{% url 'random' %}">Random Page</a>
                 </div>
                 {% block nav %}
                 {% endblock %}
