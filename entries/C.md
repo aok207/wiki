@@ -1,3 +1,2 @@
 # C
-
-C is the mother(or father?) of all programming language.
+C is known as the mother of all programming languages.

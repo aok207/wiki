@@ -7,7 +7,6 @@ from random import choice
 from . import util
 
 markdowner = markdown2.Markdown()
-entry_list = util.list_entries()
 # This variable is used in edit function to store the entry page title that user want to edit.
 final_entry_page = None
 
@@ -25,6 +24,7 @@ def index(request):
     if request.method == "POST":
         # Implanting Search feature #
         search = request.POST.get("q")
+        entry_list = util.list_entries()
         match_list = []
         if len(search) > 0:
             # Loop through the list of entry
@@ -69,6 +69,7 @@ def new_page(request):
         if form.is_valid():
             title = form.cleaned_data["title"]
             content = form.cleaned_data["textarea"]
+            entry_list = util.list_entries()
             
             # If title already exists, throw an error, by passing in None as "form" value.
             if title.lower() in [entry.lower() for entry in entry_list]:
