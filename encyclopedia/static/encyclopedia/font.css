@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Linux Libertine';
+    src: url('LinLibertine.woff2') format('woff2'),
+        url('LinLibertine.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

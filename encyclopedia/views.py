@@ -26,19 +26,24 @@ def index(request):
         # Implanting Search feature #
         search = request.POST.get("q")
         match_list = []
-        # Loop through the list of entry
-        for entry in entry_list:
-            # If there's a match, redirect to that matched page
-            if search.lower() == entry.lower():
-                return HttpResponseRedirect(f"wiki/{entry}")
-            # If a substring is matched, add it to the match_list
-            elif search.lower() in entry.lower():
-                match_list.append(entry)
-        
-        return render(request, "encyclopedia/index.html", {
-            "entries": match_list, 
-            "title": f"Searches results for '{search}'"
-        })
+        if len(search) > 0:
+            # Loop through the list of entry
+            for entry in entry_list:
+                # If there's a match, redirect to that matched page
+                if search.lower() == entry.lower():
+                    return HttpResponseRedirect(f"wiki/{entry}")
+                # If a substring is matched, add it to the match_list
+                elif search.lower() in entry.lower():
+                    match_list.append(entry)
+            
+            return render(request, "encyclopedia/index.html", {
+                "entries": match_list, 
+                "title": f"Searches results for '{search}'"
+            })
+        else:
+            return render(request, "encyclopedia/index.html", {
+                "entries": util.list_entries(), "title": "All Pages"
+            })
 
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries(), "title": "All Pages"

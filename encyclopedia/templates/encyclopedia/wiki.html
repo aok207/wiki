@@ -12,7 +12,7 @@
         <form action="{% url 'edit' %}" method="get">    
             {% csrf_token %}
             <input type="hidden" name="page_name" value="{{ page_name }}">
-            <button type="submit">Edit</button>
+            <button type="submit" class="btn btn-primary">Edit</button>
         </form>
     {% endif %}
 {% endblock %}

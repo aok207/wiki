@@ -7,11 +7,11 @@
 {% block body %}
     <h1>{{ title }}</h1>
 
-    <ul>
+    <ul class="list-group list-group-flush">
         {% for entry in entries %}
-            <li><a href="wiki/{{ entry }}">{{ entry }}</a></li>
+            <li class="list-group-item"><a href="wiki/{{ entry }}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">{{ entry }}</a></li>
         {% empty %}
-            <li>No, matches found!</li>
+            <li class="list-group-item">No, matches found!</li>
         {% endfor %}
     </ul>
 
